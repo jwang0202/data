@@ -328,6 +328,8 @@ censReg.adj <- function( formula, left = 0, right = Inf,
   result$adj.r.squared <- 1 - var(yVec-fitted.val)*(nobs-1)/(var(yVec-mean.y)*residual.df)
   result$r.squared <- 1 - var(yVec-fitted.val)/var(yVec-mean.y)
   result$data <- data
+  # Remove gradientObs from list- save space
+  result$gradientObs <- NULL
   ##################################################
   class( result ) <- c( "censReg", class( result ) )
   return( result )
